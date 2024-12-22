@@ -61,11 +61,7 @@ public class NetworkApp {
 
             // Task 3: Resource Redistribution
             
-            List<ResourceRedistribution.Warehouse> redistributionWarehouses = new ArrayList<>();
-            for (EmergencySupplyNetwork.Warehouse warehouse : warehouses) {
-                redistributionWarehouses.add(new ResourceRedistribution.Warehouse(warehouse.id, warehouse.remainingCapacity, warehouse.name));
-            }
-            ResourceRedistribution redistribution = new ResourceRedistribution(redistributionWarehouses);
+            ResourceRedistribution redistribution = new ResourceRedistribution(warehouses);
 
             //ResourceRedistribution redistribution = new ResourceRedistribution(warehouses);
             List<ResourceRedistribution.Transfer> transfers = redistribution.redistributeResources();

@@ -1,6 +1,7 @@
 package com.ift2015.tp2;
 // ResourceRedistribution.java
 import java.util.*;
+import com.ift2015.tp2.EmergencySupplyNetwork.Warehouse;
 
 
 public class ResourceRedistribution {
@@ -31,7 +32,7 @@ public class ResourceRedistribution {
             surplusWarehouse.remainingCapacity -= transferableAmount;
             needWarehouse.remainingCapacity += transferableAmount;
 
-            transfers.add(new Transfer(surplusWarehouse.id, needWarehouse.id, transferableAmount, surplusWarehouse.name, needWarehouse.name));
+            transfers.add(new Transfer(surplusWarehouse, needWarehouse, transferableAmount));
 
             if (surplusWarehouse.remainingCapacity > 50) {
                 surplusHeap.add(surplusWarehouse);
@@ -45,42 +46,21 @@ public class ResourceRedistribution {
     }
 
     public static class Transfer {
-        int fromWarehouseId;
-        int toWarehouseId;
+        EmergencySupplyNetwork.Warehouse fromWarehouse;
+        EmergencySupplyNetwork.Warehouse toWarehouse;
         int units;
-        String fromName;
-        String toName;
-
-        public Transfer(int fromWarehouseId, int toWarehouseId, int units, String fromName, String toName) {
-            this.fromWarehouseId = fromWarehouseId;
-            this.toWarehouseId = toWarehouseId;
+    
+        public Transfer(EmergencySupplyNetwork.Warehouse fromWarehouse, EmergencySupplyNetwork.Warehouse toWarehouse, int units) {
+            this.fromWarehouse = fromWarehouse;
+            this.toWarehouse = toWarehouse;
             this.units = units;
-            this.fromName = fromName;
-            this.toName = toName;
         }
-
-        // @Override
-        // public String toString() {
-        //     return "Transfer {" +
-        //             "from=" + fromWarehouseId +
-        //             ", to=" + toWarehouseId +
-        //             ", units=" + units +
-        //             '}';
-        // }
+    
         @Override
         public String toString() {
-            return "Transferred " + units + " units from Warehouse " + fromName + " to Warehouse " + toName + ".";
+            return "Transferred " + units + " units from Warehouse " + fromWarehouse.name + " to Warehouse " + toWarehouse.name + ".";
         }
     }
+    
 
-    public static class Warehouse {
-        int id, remainingCapacity;
-        String name;
-
-        public Warehouse(int id, int remainingCapacity, String name) {
-            this.id = id;
-            this.remainingCapacity = remainingCapacity;
-            this.name = name;
-        }
-    }
 }
