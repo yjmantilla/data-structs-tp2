@@ -76,7 +76,7 @@ public class EmergencySupplyNetwork {
                 if (warehouse.remainingCapacity > 0) {
                     int allocatedUnits = Math.min(city.demand, warehouse.remainingCapacity);
                     allocations.putIfAbsent(city, new ArrayList<>());
-                    allocations.get(city).add(new ResourceAllocation(warehouse.id, allocatedUnits));
+                    allocations.get(city).add(new ResourceAllocation(warehouse, allocatedUnits));
                     warehouse.remainingCapacity -= allocatedUnits;
                     city.demand -= allocatedUnits;
                     System.out.println("  Allocated " + allocatedUnits + " units from Warehouse " + warehouse.id);
@@ -163,7 +163,7 @@ public class EmergencySupplyNetwork {
                     warehouse.remainingCapacity -= allocatedUnits;
                     city.demand -= allocatedUnits;
     
-                    allocations.get(city).add(new ResourceAllocation(warehouse.id, allocatedUnits));
+                    allocations.get(city).add(new ResourceAllocation(warehouse, allocatedUnits));
                 }
             }
         }
@@ -239,17 +239,18 @@ public class EmergencySupplyNetwork {
     }
     
     public static class ResourceAllocation {
-        int warehouseId, units;
+        Warehouse warehouse;
+        int units;
 
-        public ResourceAllocation(int warehouseId, int units) {
-            this.warehouseId = warehouseId;
+        public ResourceAllocation(Warehouse warehouse, int units) {
+            this.warehouse = warehouse;
             this.units = units;
         }
 
         @Override
         public String toString() {
             return "ResourceAllocation{" +
-                    "warehouseId=" + warehouseId +
+                    "warehouseId=" + this.warehouse.id +
                     ", units=" + units +
                     '}';
         }

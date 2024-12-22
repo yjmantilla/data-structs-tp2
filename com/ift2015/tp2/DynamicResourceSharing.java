@@ -5,11 +5,15 @@ import java.util.*;
 public class DynamicResourceSharing {
     private Map<Integer, Integer> parent;
     private Map<Integer, Integer> rank;
+    private Map<Integer, List<Integer>> cityToWarehouses; // Store city-to-warehouse mapping
 
-    public DynamicResourceSharing(List<Integer> cityIds) {
+    public DynamicResourceSharing(Map<Integer, List<Integer>> cityToWarehouses) {
+        this.cityToWarehouses = cityToWarehouses;
         parent = new HashMap<>();
         rank = new HashMap<>();
-        for (int cityId : cityIds) {
+
+        // Initialize parent and rank for all city IDs
+        for (Integer cityId : cityToWarehouses.keySet()) {
             parent.put(cityId, cityId);
             rank.put(cityId, 0);
         }
@@ -40,6 +44,23 @@ public class DynamicResourceSharing {
 
     public boolean areInSameCluster(int cityId1, int cityId2) {
         return find(cityId1) == find(cityId2);
+    }
+
+    public boolean shareResources(int cityId1, int cityId2) {
+        List<Integer> warehousesCity1 = cityToWarehouses.get(cityId1);
+        List<Integer> warehousesCity2 = cityToWarehouses.get(cityId2);
+
+        if (warehousesCity1 == null || warehousesCity2 == null) {
+            return false; // No warehouses assigned
+        }
+
+        // Check for any shared warehouses
+        // check if the two arrays are exactly the same
+        if (warehousesCity1.size() == warehousesCity2.size() && warehousesCity1.containsAll(warehousesCity2)) {
+            return true;
+        } 
+
+        return false; // No shared resources
     }
 
     public Map<Integer, List<Integer>> getClusters() {
