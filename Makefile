@@ -20,9 +20,9 @@ all: compile
 compile:
 	$(JAVAC) -cp $(CLASSPATH) $(SRC)
 
-# Run the program
+# Run the program with optional arguments
 run:
-	$(JAVA) com.ift2015.tp2.NetworkApp TestCase1.txt
+	$(JAVA) com.ift2015.tp2.NetworkApp $(ARGS)
 
 # Clean compiled files
 clean:
