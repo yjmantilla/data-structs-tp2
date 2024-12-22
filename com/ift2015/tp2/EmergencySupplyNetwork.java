@@ -124,7 +124,7 @@ public class EmergencySupplyNetwork {
                     warehouse.remainingCapacity -= allocatedUnits;
                     city.demand -= allocatedUnits;
     
-                    allocations.get(city).add(new ResourceAllocation(warehouse.id, allocatedUnits));
+                    allocations.get(city).add(new ResourceAllocation(warehouse, allocatedUnits));
                 }
             }
         }
