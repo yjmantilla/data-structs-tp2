@@ -10,6 +10,9 @@ CLASSPATH = .:java-json.jar
 # Source Files
 SRC = com/ift2015/tp2/EmergencySupplyNetwork.java com/ift2015/tp2/ResourceRedistribution.java com/ift2015/tp2/DynamicResourceSharing.java com/ift2015/tp2/NetworkApp.java com/ift2015/tp2/InputParser.java
 
+OS := $(shell uname -s)
+
+
 # Targets
 .PHONY: all clean run
 
@@ -22,9 +25,8 @@ compile:
 
 # Run the program
 run:
-	$(JAVA) -cp $(CLASSPATH) NetworkApp
+	$(JAVA) com.ift2015.tp2.NetworkApp TestCase1.txt
 
 # Clean compiled files
 clean:
-	rm -f *.class
-
+	rm -f ./com/ift2015/tp2/*.class
