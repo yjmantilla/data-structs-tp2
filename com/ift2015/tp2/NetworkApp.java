@@ -10,8 +10,17 @@ import com.ift2015.tp2.EmergencySupplyNetwork.ResourceAllocation;
 public class NetworkApp {
     public static void main(String[] args) {
 
+        String inputFilePath = "TestCase1.txt";
 
-        String inputFilePath = "TestCase0.txt";
+        // Check if the file path is provided as an argument
+        if (args.length < 1) {
+            System.out.println("Usage: java NetworkApp <inputFilePath>");
+            System.out.println("Using default file path: TestCase1.txt");
+        }
+        else{
+            inputFilePath = args[0]; // Use the first argument as the file path
+        }
+
 
         try {
             InputParser.ParsedData parsedData = InputParser.parseInput(inputFilePath);
