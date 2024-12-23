@@ -2,12 +2,52 @@ package com.ift2015.tp2;
 // EmergencySupplyNetwork.java
 import java.util.*;
 
+/**
+ * The EmergencySupplyNetwork class represents a network of cities and warehouses
+ * for managing the transportation and allocation of emergency supplies.
+ * It calculates transportation costs between cities and warehouses and allocates
+ * resources based on city priorities and warehouse capacities.
+ * 
+ * The class provides methods to:
+ * - Construct the network with a list of cities and warehouses.
+ * - Calculate the cost matrix for transporting supplies.
+ * - Retrieve the cost matrix.
+ * - Allocate resources from warehouses to cities based on priority and cost.
+ * 
+ * The class also includes nested static classes to represent City, Warehouse,
+ * and ResourceAllocation, as well as an enum for Priority levels.
+ * 
+ * Methods:
+ * - EmergencySupplyNetwork(List<City> cities, List<Warehouse> warehouses):
+ *   Constructs the network with the specified list of cities and warehouses.
+ * - calculateCostMatrix(): Calculates the cost matrix for transporting supplies.
+ * - euclideanDistance(int x1, int y1, int x2, int y2): Calculates the Euclidean distance between two points.
+ * - getTransportCoefficient(double distance): Determines the transport coefficient based on the distance.
+ * - getCostMatrix(): Retrieves the cost matrix for the network.
+ * - allocateResources(): Allocates resources from warehouses to cities based on priority and cost.
+ * - calculateTransportationCost(City city, Warehouse warehouse): Calculates the transportation cost between a city and a warehouse.
+ * 
+ * Nested Classes:
+ * - City: Represents a city in the network with id, coordinates, demand, priority, and name.
+ * - Warehouse: Represents a warehouse in the network with id, coordinates, capacity, remaining capacity, and name.
+ * - ResourceAllocation: Represents a resource allocation from a warehouse with the warehouse and number of units allocated.
+ * 
+ * Enum:
+ * - Priority: Represents priority levels (LOW, MEDIUM, HIGH) for cities.
+ */
 public class EmergencySupplyNetwork {
     private double[][] costMatrix;
     private List<City> cities;
     private List<Warehouse> warehouses;
     private boolean costReady = false;
 
+    /**
+     * Constructs an EmergencySupplyNetwork with the specified list of cities and warehouses.
+     * Initializes the cost matrix and calculates the costs between cities and warehouses.
+     *
+     * @param cities      the list of cities in the network
+     * @param warehouses  the list of warehouses in the network
+     */
     public EmergencySupplyNetwork(List<City> cities, List<Warehouse> warehouses) {
         this.cities = cities;
         this.warehouses = warehouses;
@@ -15,6 +55,15 @@ public class EmergencySupplyNetwork {
         calculateCostMatrix();
     }
 
+    /**
+     * Calculates the cost matrix for transporting supplies from warehouses to cities.
+     * The cost matrix is a 2D array where each element represents the transportation cost
+     * from a specific warehouse to a specific city.
+     * 
+     * This method iterates over all cities and warehouses, calculates the transportation cost
+     * for each pair, and stores the result in the cost matrix. Once the cost matrix is fully
+     * populated, it sets the costReady flag to true.
+     */
     private void calculateCostMatrix() {
         for (int i = 0; i < cities.size(); i++) {
             for (int j = 0; j < warehouses.size(); j++) {
@@ -24,14 +73,32 @@ public class EmergencySupplyNetwork {
         this.costReady = true;
     }
 
+    /**
+     * Calculates the Euclidean distance between two points (x1, y1) and (x2, y2).
+     *
+     * @param x1 the x-coordinate of the first point
+     * @param y1 the y-coordinate of the first point
+     * @param x2 the x-coordinate of the second point
+     * @param y2 the y-coordinate of the second point
+     * @return the Euclidean distance between the two points
+     */
     private double euclideanDistance(int x1, int y1, int x2, int y2) {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
+    /**
+     * Determines the transport coefficient based on the given distance.
+     * 
+     * @param distance the distance to be covered
+     * @return the transport coefficient:
+     *         1 if the distance is less than or equal to 10 (Drone),
+     *         2 if the distance is greater than 10 and less than or equal to 20 (Truck),
+     *         3 if the distance is greater than 20 (Rail)
+     */
     private int getTransportCoefficient(double distance) {
-        if (distance <= 10) return 1;
-        else if (distance <= 20) return 2;
-        else return 3;
+        if (distance <= 10) return 1; // Drone
+        else if (distance <= 20) return 2; // Truck
+        else return 3; // Rail
     }
 
     /**
@@ -244,6 +311,9 @@ public class EmergencySupplyNetwork {
         }
     }
 
+    /**
+     * Enum representing the priority levels for the Emergency Supply Network.
+     */
     public enum Priority {
         LOW, MEDIUM, HIGH // Priority levels
     }
