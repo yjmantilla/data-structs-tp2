@@ -174,6 +174,13 @@ public class EmergencySupplyNetwork {
     }
     
     
+    /**
+     * Calculates the transportation cost between a city and a warehouse.
+     *
+     * @param city The city for which the transportation cost is being calculated.
+     * @param warehouse The warehouse from which the transportation cost is being calculated.
+     * @return The transportation cost based on the distance and a transport coefficient.
+     */
     private double calculateTransportationCost(City city, Warehouse warehouse) {
         double distance = euclideanDistance(city.x, city.y, warehouse.x, warehouse.y);
         int coefficient = getTransportCoefficient(distance);
