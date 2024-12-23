@@ -1,4 +1,4 @@
-# data-structs-tp2
+# IFT2015 - TP2: Emergency Supply Network
 
 ## Compiling the code
 
