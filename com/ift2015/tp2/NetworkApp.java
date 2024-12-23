@@ -6,6 +6,26 @@ import java.util.*;
 import com.ift2015.tp2.EmergencySupplyNetwork.City;
 import com.ift2015.tp2.EmergencySupplyNetwork.ResourceAllocation;
 
+/**
+ * The NetworkApp class is the main entry point for the Emergency Supply Network application.
+ * It reads input data from a file, processes the data to create a network of cities and warehouses,
+ * performs resource allocation, redistribution, and dynamic resource sharing tasks, and outputs the results
+ * in both console and JSON format.
+ *
+ * Usage: java NetworkApp <inputFilePath>
+ * If no input file path is provided, the default file "TestCase1.txt" is used.
+ *
+ * The main tasks performed by this application are:
+ *
+ *   Task 1 & 2: Graph and Resource Allocation
+ *   Task 3: Resource Redistribution
+ *   Task 4: Dynamic Resource Sharing
+ * 
+ *
+ * Each task involves parsing input data, performing computations, and generating output in JSON format.
+ *
+ * Exceptions are handled to ensure that errors during file reading or JSON writing are reported to the console.
+ */
 public class NetworkApp {
     public static void main(String[] args) {
 
@@ -343,7 +363,5 @@ public class NetworkApp {
             System.err.println("Error reading input file: " + e.getMessage());
             e.printStackTrace();
         }
-
-
     }
 }
