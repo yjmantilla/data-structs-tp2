@@ -8,7 +8,7 @@ JAVA = java
 CLASSPATH = .:java-json.jar
 
 # Source Files
-SRC = com/ift2015/tp2/EmergencySupplyNetwork.java com/ift2015/tp2/ResourceRedistribution.java com/ift2015/tp2/DynamicResourceSharing.java com/ift2015/tp2/NetworkApp.java com/ift2015/tp2/InputParser.java
+SRC = com/ift2015/tp2/EmergencySupplyNetwork.java com/ift2015/tp2/ResourceRedistribution.java com/ift2015/tp2/DynamicResourceSharing.java com/ift2015/tp2/NetworkApp.java com/ift2015/tp2/InputParser.java com/ift2015/tp2/JsonUtils.java
 
 # Targets
 .PHONY: all clean run

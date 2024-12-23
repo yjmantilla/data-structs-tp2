@@ -89,8 +89,10 @@ public class EmergencySupplyNetwork {
             }
 
         }
-
-        return allocations;
+        // sort the allocations by city id
+        Map<City, List<ResourceAllocation>> sortedAllocations = new TreeMap<>((c1, c2) -> Integer.compare(c1.id, c2.id));
+        sortedAllocations.putAll(allocations);
+        return sortedAllocations;
     }
 
     public Map<City, List<ResourceAllocation>> allocateResourcesVersion1() {
