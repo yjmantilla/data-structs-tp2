@@ -55,9 +55,9 @@
             }
         ],
         "Remaining Capacities": {
+            "Warehouse 101": 0,
             "Warehouse 102": 30,
-            "Warehouse 103": 100,
-            "Warehouse 101": 0
+            "Warehouse 103": 100
         }
     },
     "Task 3": {
@@ -70,9 +70,9 @@
                 }
             ],
             "Final Resource Levels": {
+                "Warehouse 101": 50,
                 "Warehouse 102": 30,
-                "Warehouse 103": 50,
-                "Warehouse 101": 50
+                "Warehouse 103": 50
             }
         }
     },

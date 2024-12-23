@@ -350,7 +350,7 @@ public class NetworkApp {
             // Write JSON output to file
             try {
                 String jsonOutput = JsonUtils.mapToJson(jsonMap, 4); // Convert the jsonMap to a JSON string with 4 spaces for indentation
-                String outputFilePath = inputFilePath.replace(".txt", ".json"); // Change the file extension to .json
+                String outputFilePath = "Output_"+ inputFilePath.replace(".txt", ".json"); // Change the file extension to .json
                 System.out.println("Saving results to " + outputFilePath); // Print the output file path
                 JsonUtils.saveToJson(outputFilePath, jsonOutput); // Save the JSON to the output file
                 System.out.println(jsonOutput); // Print the JSON to the console

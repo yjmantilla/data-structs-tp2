@@ -2214,16 +2214,8 @@
             {
                 "City": "City 9",
                 "Priority": "Low",
-                "Allocated": [
-                    {
-                        "Units": 10,
-                        "Warehouse": "Warehouse 104"
-                    },
-                    {
-                        "Units": 15,
-                        "Warehouse": "Warehouse 103"
-                    }
-                ]
+                "Allocated": 25,
+                "Warehouse": "Warehouse 103"
             },
             {
                 "City": "City 10",
@@ -2326,8 +2318,16 @@
             {
                 "City": "City 21",
                 "Priority": "Low",
-                "Allocated": 25,
-                "Warehouse": "Warehouse 112"
+                "Allocated": [
+                    {
+                        "Units": 10,
+                        "Warehouse": "Warehouse 104"
+                    },
+                    {
+                        "Units": 15,
+                        "Warehouse": "Warehouse 112"
+                    }
+                ]
             },
             {
                 "City": "City 22",
@@ -2610,32 +2610,32 @@
         ],
         "Remaining Capacities": {
             "Warehouse 101": 0,
+            "Warehouse 102": 0,
+            "Warehouse 103": 20,
+            "Warehouse 104": 0,
+            "Warehouse 105": 190,
             "Warehouse 106": 0,
             "Warehouse 107": 0,
             "Warehouse 108": 0,
-            "Warehouse 102": 0,
-            "Warehouse 104": 0,
-            "Warehouse 103": 30,
             "Warehouse 109": 0,
-            "Warehouse 105": 190,
-            "Warehouse 122": 0,
-            "Warehouse 111": 0,
-            "Warehouse 121": 130,
             "Warehouse 110": 150,
-            "Warehouse 112": 130,
+            "Warehouse 111": 0,
+            "Warehouse 112": 140,
             "Warehouse 113": 120,
-            "Warehouse 124": 0,
             "Warehouse 114": 0,
-            "Warehouse 123": 140,
             "Warehouse 115": 0,
             "Warehouse 116": 0,
-            "Warehouse 125": 95,
             "Warehouse 117": 0,
-            "Warehouse 126": 0,
             "Warehouse 118": 0,
-            "Warehouse 127": 0,
             "Warehouse 119": 110,
             "Warehouse 120": 130,
+            "Warehouse 121": 130,
+            "Warehouse 122": 0,
+            "Warehouse 123": 140,
+            "Warehouse 124": 0,
+            "Warehouse 125": 95,
+            "Warehouse 126": 0,
+            "Warehouse 127": 0,
             "Warehouse 128": 60,
             "Warehouse 129": 0,
             "Warehouse 130": 0,
@@ -2660,79 +2660,84 @@
                     "Units": 50
                 },
                 {
-                    "From": "Warehouse AI",
+                    "From": "Warehouse Q",
                     "To": "Warehouse AD",
                     "Units": 50
                 },
                 {
-                    "From": "Warehouse Q",
+                    "From": "Warehouse AI",
                     "To": "Warehouse AB",
                     "Units": 50
                 },
                 {
-                    "From": "Warehouse V",
+                    "From": "Warehouse I",
                     "To": "Warehouse A",
                     "Units": 50
                 },
                 {
-                    "From": "Warehouse I",
+                    "From": "Warehouse V",
                     "To": "Warehouse B",
                     "Units": 50
                 },
                 {
-                    "From": "Warehouse K",
+                    "From": "Warehouse O",
                     "To": "Warehouse C",
                     "Units": 50
                 },
                 {
-                    "From": "Warehouse O",
+                    "From": "Warehouse Q",
                     "To": "Warehouse E",
                     "Units": 50
                 },
                 {
-                    "From": "Warehouse Q",
-                    "To": "Warehouse O",
-                    "Units": 50
-                },
-                {
-                    "From": "Warehouse AG",
+                    "From": "Warehouse K",
                     "To": "Warehouse F",
                     "Units": 50
                 },
                 {
-                    "From": "Warehouse N",
-                    "To": "Warehouse N",
-                    "Units": 50
-                },
-                {
-                    "From": "Warehouse AC",
-                    "To": "Warehouse U",
-                    "Units": 50
-                },
-                {
-                    "From": "Warehouse AA",
-                    "To": "Warehouse L",
-                    "Units": 50
-                },
-                {
-                    "From": "Warehouse P",
-                    "To": "Warehouse M",
-                    "Units": 50
-                },
-                {
-                    "From": "Warehouse AF",
+                    "From": "Warehouse AG",
                     "To": "Warehouse H",
                     "Units": 50
                 },
                 {
+                    "From": "Warehouse N",
+                    "To": "Warehouse J",
+                    "Units": 50
+                },
+                {
+                    "From": "Warehouse AC",
+                    "To": "Warehouse O",
+                    "Units": 50
+                },
+                {
+                    "From": "Warehouse AA",
+                    "To": "Warehouse N",
+                    "Units": 50
+                },
+                {
+                    "From": "Warehouse P",
+                    "To": "Warehouse Y",
+                    "Units": 50
+                },
+                {
+                    "From": "Warehouse AF",
+                    "To": "Warehouse L",
+                    "Units": 50
+                },
+                {
                     "From": "Warehouse AI",
-                    "To": "Warehouse P",
+                    "To": "Warehouse M",
                     "Units": 50
                 },
                 {
                     "From": "Warehouse Q",
-                    "To": "Warehouse J",
+                    "To": "Warehouse P",
                     "Units": 50
+                },
+                {
+                    "From": "Warehouse G",
+                    "To": "Warehouse W",
+                    "Units": 45
                 },
                 {
                     "From": "Warehouse AE",
@@ -2740,105 +2745,100 @@
                     "Units": 45
                 },
                 {
-                    "From": "Warehouse G",
-                    "To": "Warehouse M",
-                    "Units": 45
-                },
-                {
-                    "From": "Warehouse I",
-                    "To": "Warehouse R",
-                    "Units": 40
-                },
-                {
                     "From": "Warehouse AH",
-                    "To": "Warehouse Y",
+                    "To": "Warehouse R",
                     "Units": 40
                 },
                 {
                     "From": "Warehouse V",
+                    "To": "Warehouse U",
+                    "Units": 40
+                },
+                {
+                    "From": "Warehouse I",
                     "To": "Warehouse T",
                     "Units": 40
                 },
                 {
-                    "From": "Warehouse Q",
-                    "To": "Warehouse W",
+                    "From": "Warehouse O",
+                    "To": "Warehouse M",
+                    "Units": 40
+                },
+                {
+                    "From": "Warehouse AG",
+                    "To": "Warehouse Z",
                     "Units": 30
                 },
                 {
                     "From": "Warehouse K",
-                    "To": "Warehouse Z",
-                    "Units": 20
+                    "To": "Warehouse M",
+                    "Units": 10
                 },
                 {
-                    "From": "Warehouse O",
-                    "To": "Warehouse W",
-                    "Units": 20
-                },
-                {
-                    "From": "Warehouse AG",
+                    "From": "Warehouse Q",
                     "To": "Warehouse R",
                     "Units": 10
                 },
                 {
-                    "From": "Warehouse N",
+                    "From": "Warehouse AC",
                     "To": "Warehouse T",
                     "Units": 10
                 },
                 {
-                    "From": "Warehouse AG",
-                    "To": "Warehouse Y",
+                    "From": "Warehouse K",
+                    "To": "Warehouse U",
                     "Units": 10
                 },
                 {
-                    "From": "Warehouse AC",
-                    "To": "Warehouse M",
+                    "From": "Warehouse Q",
+                    "To": "Warehouse S",
                     "Units": 5
                 },
                 {
-                    "From": "Warehouse AA",
-                    "To": "Warehouse S",
+                    "From": "Warehouse N",
+                    "To": "Warehouse W",
                     "Units": 5
                 }
             ],
             "Final Resource Levels": {
                 "Warehouse 101": 50,
+                "Warehouse 102": 50,
+                "Warehouse 103": 50,
+                "Warehouse 104": 50,
+                "Warehouse 105": 50,
                 "Warehouse 106": 50,
                 "Warehouse 107": 50,
                 "Warehouse 108": 50,
-                "Warehouse 102": 50,
-                "Warehouse 104": 50,
-                "Warehouse 103": 50,
                 "Warehouse 109": 50,
-                "Warehouse 105": 50,
-                "Warehouse 122": 50,
-                "Warehouse 111": 50,
-                "Warehouse 121": 60,
                 "Warehouse 110": 50,
-                "Warehouse 112": 60,
-                "Warehouse 113": 60,
-                "Warehouse 124": 50,
+                "Warehouse 111": 50,
+                "Warehouse 112": 50,
+                "Warehouse 113": 65,
                 "Warehouse 114": 50,
-                "Warehouse 123": 50,
                 "Warehouse 115": 50,
                 "Warehouse 116": 50,
-                "Warehouse 125": 50,
                 "Warehouse 117": 50,
-                "Warehouse 126": 50,
                 "Warehouse 118": 50,
-                "Warehouse 127": 50,
                 "Warehouse 119": 60,
-                "Warehouse 120": 50,
+                "Warehouse 120": 65,
+                "Warehouse 121": 60,
+                "Warehouse 122": 50,
+                "Warehouse 123": 50,
+                "Warehouse 124": 50,
+                "Warehouse 125": 50,
+                "Warehouse 126": 50,
+                "Warehouse 127": 50,
                 "Warehouse 128": 60,
                 "Warehouse 129": 50,
                 "Warehouse 130": 50,
                 "Warehouse 131": 50,
-                "Warehouse 132": 60,
+                "Warehouse 132": 65,
                 "Warehouse 133": 50,
-                "Warehouse 134": 65,
+                "Warehouse 134": 60,
                 "Warehouse 135": 50,
                 "Warehouse 136": 50,
                 "Warehouse 137": 55,
-                "Warehouse 138": 60,
+                "Warehouse 138": 50,
                 "Warehouse 139": 50,
                 "Warehouse 140": 50
             }
@@ -2927,6 +2927,14 @@
                     "Action": "Merge",
                     "Cities": [
                         "City C",
+                        "City I"
+                    ],
+                    "Cluster After Merge": "Cluster 3"
+                },
+                {
+                    "Action": "Merge",
+                    "Cities": [
+                        "City C",
                         "City L"
                     ],
                     "Cluster After Merge": "Cluster 3"
@@ -2951,6 +2959,14 @@
                     "Action": "Merge",
                     "Cities": [
                         "City F",
+                        "City I"
+                    ],
+                    "Cluster After Merge": "Cluster 3"
+                },
+                {
+                    "Action": "Merge",
+                    "Cities": [
+                        "City F",
                         "City L"
                     ],
                     "Cluster After Merge": "Cluster 3"
@@ -2959,6 +2975,22 @@
                     "Action": "Merge",
                     "Cities": [
                         "City F",
+                        "City O"
+                    ],
+                    "Cluster After Merge": "Cluster 3"
+                },
+                {
+                    "Action": "Merge",
+                    "Cities": [
+                        "City I",
+                        "City L"
+                    ],
+                    "Cluster After Merge": "Cluster 3"
+                },
+                {
+                    "Action": "Merge",
+                    "Cities": [
+                        "City I",
                         "City O"
                     ],
                     "Cluster After Merge": "Cluster 3"
@@ -2990,26 +3022,10 @@
                 {
                     "Action": "Merge",
                     "Cities": [
-                        "City U",
-                        "City X"
-                    ],
-                    "Cluster After Merge": "Cluster 21"
-                },
-                {
-                    "Action": "Merge",
-                    "Cities": [
-                        "City U",
-                        "City AA"
-                    ],
-                    "Cluster After Merge": "Cluster 21"
-                },
-                {
-                    "Action": "Merge",
-                    "Cities": [
                         "City X",
                         "City AA"
                     ],
-                    "Cluster After Merge": "Cluster 21"
+                    "Cluster After Merge": "Cluster 24"
                 },
                 {
                     "Action": "Merge",
@@ -3061,7 +3077,7 @@
                 "City F": "Cluster 3",
                 "City G": "Cluster 7",
                 "City H": "Cluster 8",
-                "City I": "Cluster 9",
+                "City I": "Cluster 3",
                 "City J": "Cluster 10",
                 "City K": "Cluster 11",
                 "City L": "Cluster 3",
@@ -3076,10 +3092,10 @@
                 "City U": "Cluster 21",
                 "City V": "Cluster 22",
                 "City W": "Cluster 20",
-                "City X": "Cluster 21",
+                "City X": "Cluster 24",
                 "City Y": "Cluster 25",
                 "City Z": "Cluster 26",
-                "City AA": "Cluster 21",
+                "City AA": "Cluster 24",
                 "City AB": "Cluster 28",
                 "City AC": "Cluster 29",
                 "City AD": "Cluster 30",
@@ -3515,7 +3531,7 @@
                 },
                 {
                     "Query": "Are City C and City I in the same cluster?",
-                    "Result": "No"
+                    "Result": "Yes"
                 },
                 {
                     "Query": "Are City C and City J in the same cluster?",
@@ -4055,7 +4071,7 @@
                 },
                 {
                     "Query": "Are City F and City I in the same cluster?",
-                    "Result": "No"
+                    "Result": "Yes"
                 },
                 {
                     "Query": "Are City F and City J in the same cluster?",
@@ -4571,7 +4587,7 @@
                 },
                 {
                     "Query": "Are City I and City L in the same cluster?",
-                    "Result": "No"
+                    "Result": "Yes"
                 },
                 {
                     "Query": "Are City I and City M in the same cluster?",
@@ -4583,7 +4599,7 @@
                 },
                 {
                     "Query": "Are City I and City O in the same cluster?",
-                    "Result": "No"
+                    "Result": "Yes"
                 },
                 {
                     "Query": "Are City I and City P in the same cluster?",
@@ -6275,7 +6291,7 @@
                 },
                 {
                     "Query": "Are City U and City X in the same cluster?",
-                    "Result": "Yes"
+                    "Result": "No"
                 },
                 {
                     "Query": "Are City U and City Y in the same cluster?",
@@ -6287,7 +6303,7 @@
                 },
                 {
                     "Query": "Are City U and City AA in the same cluster?",
-                    "Result": "Yes"
+                    "Result": "No"
                 },
                 {
                     "Query": "Are City U and City AB in the same cluster?",
