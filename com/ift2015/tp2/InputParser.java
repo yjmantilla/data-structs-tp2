@@ -49,8 +49,7 @@ public class InputParser {
                         String priority = matcher.group(6);
 
                         EmergencySupplyNetwork.Priority priorityEnum = EmergencySupplyNetwork.Priority.valueOf(priority.toUpperCase());
-                        EmergencySupplyNetwork.City city = new EmergencySupplyNetwork.City(id, x, y, demand, priorityEnum);
-                        city.setName(name); // Assuming `City` class has a `setName` method
+                        EmergencySupplyNetwork.City city = new EmergencySupplyNetwork.City(id, x, y, demand, priorityEnum, name);
                         data.cities.add(city);
                     }
                 }
@@ -64,8 +63,7 @@ public class InputParser {
                         int y = Integer.parseInt(matcher.group(4));
                         int capacity = Integer.parseInt(matcher.group(5));
 
-                        EmergencySupplyNetwork.Warehouse warehouse = new EmergencySupplyNetwork.Warehouse(id, x, y, capacity);
-                        warehouse.setName(name); // Assuming `Warehouse` class has a `setName` method
+                        EmergencySupplyNetwork.Warehouse warehouse = new EmergencySupplyNetwork.Warehouse(id, x, y, capacity, name);
                         data.warehouses.add(warehouse);
                     }
                 }

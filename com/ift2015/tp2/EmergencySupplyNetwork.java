@@ -181,28 +181,34 @@ public class EmergencySupplyNetwork {
     }
     
     public static class City {
-        int id, x, y, demand;
-        Priority priority;
-        String name; // New field to store the name
-    
-        public City(int id, int x, int y, int demand, Priority priority) {
+        int id, x, y, demand; // Unique identifier, coordinates, and demand of the city.
+        Priority priority; // Priority of the city.
+        String name; // Name of the city.
+        
+        /**
+         * Constructs a new City with the specified id, coordinates, demand, priority, and name.
+         *
+         * @param id       the unique identifier for the city
+         * @param x        the x-coordinate of the city location
+         * @param y        the y-coordinate of the city location
+         * @param demand   the demand of the city
+         * @param priority the priority of the city
+         * @param name     the name of the city
+         */
+        public City(int id, int x, int y, int demand, Priority priority, String name) {
             this.id = id;
             this.x = x;
             this.y = y;
             this.demand = demand;
             this.priority = priority;
-        }
-    
-        // New method to set the name
-        public void setName(String name) {
             this.name = name;
         }
-    
-        // Optional: Add a getter for the name
-        public String getName() {
-            return name;
-        }
-    
+        
+        /**
+         * Returns a string representation of the city.
+         *
+         * @return a string representation of the city
+         */
         @Override
         public String toString() {
             return "City{name='" + name + "', id=" + id + ", x=" + x + ", y=" + y +
@@ -211,28 +217,40 @@ public class EmergencySupplyNetwork {
     }
 
 
+    /**
+     * Represents a warehouse in the emergency supply network.
+     */
     public static class Warehouse {
-        int id, x, y, capacity, remainingCapacity;
-        String name; // New field to store the name
-    
-        public Warehouse(int id, int x, int y, int capacity) {
+        int id; // Unique identifier for the warehouse.
+        int x;  // X-coordinate of the warehouse location.
+        int y;  // Y-coordinate of the warehouse location.
+        int capacity; // Total capacity of the warehouse.
+        int remainingCapacity; // Remaining capacity of the warehouse.
+        String name; // Name of the warehouse.
+
+        /**
+         * Constructs a new Warehouse with the specified id, coordinates, and capacity.
+         *
+         * @param id       the unique identifier for the warehouse
+         * @param x        the x-coordinate of the warehouse location
+         * @param y        the y-coordinate of the warehouse location
+         * @param capacity the total capacity of the warehouse
+         * @param name     the name of the warehouse
+         */
+        public Warehouse(int id, int x, int y, int capacity, String name) {
             this.id = id;
             this.x = x;
             this.y = y;
             this.capacity = capacity;
-            this.remainingCapacity = capacity; // Initialize remaining capacity
-        }
-    
-        // New method to set the name
-        public void setName(String name) {
+            this.remainingCapacity = capacity;
             this.name = name;
         }
-    
-        // Optional: Add a getter for the name
-        public String getName() {
-            return name;
-        }
-    
+
+        /**
+         * Returns a string representation of the warehouse.
+         *
+         * @return a string representation of the warehouse
+         */
         @Override
         public String toString() {
             return "Warehouse{name='" + name + "', id=" + id + ", x=" + x + ", y=" + y +
@@ -240,15 +258,23 @@ public class EmergencySupplyNetwork {
         }
     }
     
+    /**
+     * Represents a resource allocation from a warehouse.
+     */
     public static class ResourceAllocation {
-        Warehouse warehouse;
-        int units;
+        Warehouse warehouse; // The warehouse from which the resources are allocated.
+        int units; // The number of units allocated.
 
         public ResourceAllocation(Warehouse warehouse, int units) {
-            this.warehouse = warehouse;
-            this.units = units;
+            this.warehouse = warehouse; // The warehouse from which the resources are allocated.
+            this.units = units; // The number of units allocated.
         }
 
+        /**
+         * Returns a string representation of the resource allocation.
+         *
+         * @return a string representation of the resource allocation
+         */
         @Override
         public String toString() {
             return "ResourceAllocation{" +
@@ -259,6 +285,6 @@ public class EmergencySupplyNetwork {
     }
 
     public enum Priority {
-        LOW, MEDIUM, HIGH
+        LOW, MEDIUM, HIGH // Priority levels
     }
 }
