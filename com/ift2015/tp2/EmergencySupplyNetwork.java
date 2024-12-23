@@ -6,6 +6,7 @@ public class EmergencySupplyNetwork {
     private double[][] costMatrix;
     private List<City> cities;
     private List<Warehouse> warehouses;
+    private boolean costReady = false;
 
     public EmergencySupplyNetwork(List<City> cities, List<Warehouse> warehouses) {
         this.cities = cities;
@@ -17,13 +18,10 @@ public class EmergencySupplyNetwork {
     private void calculateCostMatrix() {
         for (int i = 0; i < cities.size(); i++) {
             for (int j = 0; j < warehouses.size(); j++) {
-                double distance = euclideanDistance(
-                        cities.get(i).x, cities.get(i).y,
-                        warehouses.get(j).x, warehouses.get(j).y);
-                int coefficient = getTransportCoefficient(distance);
-                costMatrix[i][j] = distance * coefficient;
+                this.costMatrix[i][j] = calculateTransportationCost(cities.get(i), warehouses.get(j));
             }
         }
+        this.costReady = true;
     }
 
     private double euclideanDistance(int x1, int y1, int x2, int y2) {
@@ -36,8 +34,17 @@ public class EmergencySupplyNetwork {
         else return 3;
     }
 
+    /**
+     * Retrieves the cost matrix for the emergency supply network.
+     * If the cost matrix is not ready, it calculates the cost matrix first.
+     *
+     * @return a 2D array representing the cost matrix.
+     */
     public double[][] getCostMatrix() {
-        return costMatrix;
+        if (!this.costReady) {
+            this.calculateCostMatrix();
+        }
+        return this.costMatrix;
     }
 
     /**
@@ -68,19 +75,35 @@ public class EmergencySupplyNetwork {
             warehouse.remainingCapacity = warehouse.capacity;
         }
 
+        // Make sure cost matrix is ready, otherwise calculate it
+        if (!this.costReady) {
+            this.calculateCostMatrix();
+        }
+
         while (!cityQueue.isEmpty()) {
             City city = cityQueue.poll();
 
             System.out.println("Allocating resources for City " + city.id + " (Priority: " + city.priority + ")");
 
             // Sort warehouses by transportation cost for the current city
-            warehouses.sort((w1, w2) -> {
-                double cost1 = calculateTransportationCost(city, w1);
-                double cost2 = calculateTransportationCost(city, w2);
+            // Create a copy of the warehouses list to avoid modifying the original list
+            // This is crucial to use the cost matrix calculated based on the original order of cities and warehouses
+            List<Warehouse> warehouses_for_city = new ArrayList<>(this.warehouses);
+            warehouses_for_city.sort((w1, w2) -> {
+                int cityIndex = this.cities.indexOf(city);
+                int warehouseIndex1 = this.warehouses.indexOf(w1);
+                int warehouseIndex2 = this.warehouses.indexOf(w2);
+                double cost1 = this.getCostMatrix()[cityIndex][warehouseIndex1];
+                double cost2 = this.getCostMatrix()[cityIndex][warehouseIndex2];
+                // Alternatively, we could calculate the transportation cost again
+                // might be faster to recalculate it than to look it up in the matrix
+                // if there are many cities and warehouses
+                // double cost1 = calculateTransportationCost(city, w1);
+                // double cost2 = calculateTransportationCost(city, w2);
                 return Double.compare(cost1, cost2);
             });
 
-            for (Warehouse warehouse : warehouses) {
+            for (Warehouse warehouse : warehouses_for_city) {
                 // If city demand is already met, stop allocating
                 if (city.demand == 0) break;
             
