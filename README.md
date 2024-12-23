@@ -17,3 +17,9 @@ or
 ```bash
 make run ARGS="TestCase2.txt --verbose"
 ```
+
+## Results
+
+The resulting json will be created with the same filename but with a json extension. It is assumed that the input file is a .txt file.
+
+For example if the input file is `TestCase1.txt`, the output file will be `TestCase1.json`.
