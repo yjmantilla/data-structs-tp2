@@ -81,7 +81,8 @@
             "Initial Clusters": {
                 "City A": "Cluster 1",
                 "City B": "Cluster 2",
-                "City C": "Cluster 4"
+                "City C": "Cluster 3",
+                "City D": "Cluster 4"
             },
             "Merging Steps": [
                 {
@@ -96,7 +97,8 @@
             "Cluster Membership After Merging": {
                 "City A": "Cluster 1",
                 "City B": "Cluster 1",
-                "City C": "Cluster 4"
+                "City C": "Cluster 3",
+                "City D": "Cluster 4"
             },
             "Queries": [
                 {
@@ -108,7 +110,7 @@
                     "Result": "No"
                 },
                 {
-                    "Query": "Are City A and City C in the same cluster?",
+                    "Query": "Are City A and City D in the same cluster?",
                     "Result": "No"
                 },
                 {
@@ -116,11 +118,11 @@
                     "Result": "No"
                 },
                 {
-                    "Query": "Are City B and City C in the same cluster?",
+                    "Query": "Are City B and City D in the same cluster?",
                     "Result": "No"
                 },
                 {
-                    "Query": "Are City C and City C in the same cluster?",
+                    "Query": "Are City C and City D in the same cluster?",
                     "Result": "No"
                 }
             ]
