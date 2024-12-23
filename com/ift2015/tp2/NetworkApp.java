@@ -9,6 +9,7 @@ import com.ift2015.tp2.EmergencySupplyNetwork.ResourceAllocation;
 public class NetworkApp {
     public static void main(String[] args) {
 
+        System.out.println("IFT2015 - TP2: Emergency Supply Network");
         String inputFilePath = "TestCasePDF.txt";
 
         // Check if the file path is provided as an argument
@@ -18,6 +19,7 @@ public class NetworkApp {
         }
         else{
             inputFilePath = args[0]; // Use the first argument as the file path
+            System.out.println("Using file path: " + inputFilePath);
         }
 
 
@@ -292,6 +294,7 @@ public class NetworkApp {
             try {
                 String jsonOutput = JsonUtils.mapToJson(jsonMap, 4);
                 String outputFilePath = inputFilePath.replace(".txt", ".json");
+                System.out.println("Saving results to " + outputFilePath);
                 JsonUtils.saveToJson(outputFilePath, jsonOutput);
                 System.out.println(jsonOutput);
                 System.out.println("Results saved to " + outputFilePath);
