@@ -10,7 +10,7 @@ public class NetworkApp {
     public static void main(String[] args) {
 
         System.out.println("IFT2015 - TP2: Emergency Supply Network");
-        String inputFilePath = "TestCasePDF.txt";
+        String inputFilePath = "TestCase1.txt";
 
         // Check if the file path is provided as an argument
         if (args.length < 1) {

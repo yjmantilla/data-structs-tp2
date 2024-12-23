@@ -175,8 +175,8 @@ public class EmergencySupplyNetwork {
     
     
     private double calculateTransportationCost(City city, Warehouse warehouse) {
-        double distance = Math.sqrt(Math.pow(city.x - warehouse.x, 2) + Math.pow(city.y - warehouse.y, 2));
-        int coefficient = (distance <= 10) ? 1 : (distance <= 20) ? 2 : 3;
+        double distance = euclideanDistance(city.x, city.y, warehouse.x, warehouse.y);
+        int coefficient = getTransportCoefficient(distance);
         return distance * coefficient;
     }
     
