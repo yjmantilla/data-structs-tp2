@@ -8,7 +8,7 @@ JAVA = java
 CLASSPATH = .:java-json.jar
 
 # Source Files
-SRC = com/ift2015/tp2/EmergencySupplyNetwork.java com/ift2015/tp2/ResourceRedistribution.java com/ift2015/tp2/DynamicResourceSharing.java com/ift2015/tp2/NetworkApp.java com/ift2015/tp2/InputParser.java com/ift2015/tp2/JsonUtils.java
+SRC = EmergencySupplyNetwork.java ResourceRedistribution.java DynamicResourceSharing.java NetworkApp.java InputParser.java JsonUtils.java
 
 # Targets
 .PHONY: all clean run
@@ -21,9 +21,14 @@ compile:
 	$(JAVAC) -cp $(CLASSPATH) $(SRC)
 
 # Run the program with optional arguments
-run:
-	$(JAVA) com.ift2015.tp2.NetworkApp $(ARGS)
+
+run_tests: compile
+	$(JAVA) NetworkApp TestCase1.txt
+	$(JAVA) NetworkApp TestCase2.txt
+
+run: compile
+	$(JAVA) NetworkApp $(ARGS)
 
 # Clean compiled files
 clean:
-	rm -f ./com/ift2015/tp2/*.class
+	rm -f *.class
