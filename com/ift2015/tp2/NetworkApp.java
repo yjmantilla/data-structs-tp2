@@ -65,13 +65,13 @@ public class NetworkApp {
             // Print the parsed cities and warehouses to check if the input was read correctly
             System.out.println("Parsed Cities:"+ cities.size());
             for (City city : cities) {
-                System.out.println("City " + city.id + " Priority: " + city.priority);
+                System.out.println("City " + city.name + " Priority: " + city.priority);
             }
             System.out.println("");
 
             System.out.println("Parsed warehouses: " + warehouses.size());
             for (EmergencySupplyNetwork.Warehouse warehouse : warehouses) {
-                System.out.println("Warehouse " + warehouse.id + " Capacity: " + warehouse.capacity);
+                System.out.println("Warehouse " + warehouse.name + " Capacity: " + warehouse.capacity);
             }
             System.out.println("");
             System.out.println("");
@@ -99,7 +99,7 @@ public class NetworkApp {
             System.out.println(separator);
 
             // Print header
-            System.out.print("cities    |");
+            System.out.print("cities     |");
             for (int i = 0; i < warehouses.size(); i++) {
                 System.out.printf(" Warehouse %d |", warehouses.get(i).id);
             }
@@ -112,10 +112,10 @@ public class NetworkApp {
             List<Object> costArray = new ArrayList<>();
             for (int i = 0; i < cities.size(); i++) {
                 int spaces = 5; // Default spaces for city names, this is hardcoded, but could be adjusted based on the city names
-                System.out.printf("City %-"+spaces+"d|", cities.get(i).id); // Align city IDs
+                System.out.print("City "+cities.get(i).name+" ".repeat(spaces)+"|"); // Print the city name
 
                 Map<String,Object> thiscost = new LinkedHashMap<>(); // Create a map to store the cost matrix (warehouse costs for each city) for the json
-                thiscost.put("City","City "+cities.get(i).id);  // Add the city ID to the map
+                thiscost.put("City",cities.get(i).name);  // Add the city ID to the map
 
                 // Print the cost matrix values for each warehouse
                 for (int j = 0; j < warehouses.size(); j++) {
@@ -144,16 +144,6 @@ public class NetworkApp {
             System.out.println("");
             System.out.println("");
 
-            Map<String,Object> remCap = new LinkedHashMap<>(); // Create a map to store the remaining capacities of the warehouses for the json
-            System.out.println("Remaining Warehouse Capacities:");
-
-            // Print the remaining capacities of the warehouses
-            // And make the Remaining Capacities map for the json
-            for (EmergencySupplyNetwork.Warehouse warehouse : warehouses) {
-                System.out.println("  Warehouse " + warehouse.id + ": " + warehouse.remainingCapacity + " units");
-                remCap.put("Warehouse "+warehouse.id,warehouse.remainingCapacity);
-            }
-
             // Resource allocations for the json
             List<Object> allocationArray = new ArrayList<>();
 
@@ -165,7 +155,7 @@ public class NetworkApp {
 
                 Map<String,Object> thisAllocation = new LinkedHashMap<>(); // Create a map to store the resource allocations of this city for the json
 
-                thisAllocation.put("City","City "+entry.getKey().id); // Add the city ID to the map
+                thisAllocation.put("City",entry.getKey().name); // Add the city ID to the map
 
                 // Deal with the priority. Originally it was Capital Case, so we will capitalize the first letter and lowercase the rest
                 // as internally we used ALL CAPS for the priority
@@ -191,6 +181,16 @@ public class NetworkApp {
                     thisAllocation.put("Allocated", allocs); // Add the list of allocations to the map
                 }
                 allocationArray.add(thisAllocation); // Add the resource allocations for this city to the list for the json
+            }
+
+
+            Map<String,Object> remCap = new LinkedHashMap<>(); // Create a map to store the remaining capacities of the warehouses for the json
+            System.out.println("Remaining Warehouse Capacities:");
+            // Print the remaining capacities of the warehouses
+            // And make the Remaining Capacities map for the json
+            for (EmergencySupplyNetwork.Warehouse warehouse : warehouses) {
+                System.out.println("  Warehouse " + warehouse.id + ": " + warehouse.remainingCapacity + " units");
+                remCap.put("Warehouse "+warehouse.id,warehouse.remainingCapacity);
             }
 
             task1_2.put("Resource Allocation",allocationArray); // Add the resource allocations to task1_2 for the json
@@ -285,6 +285,9 @@ public class NetworkApp {
             DRSmap.put("Initial Clusters",initClusters); // Add the initial clusters to the DRSmap for the json
 
 
+            System.out.println("");
+            System.out.println("");
+
             // Perform unions based on shared resources
             ArrayList<Object> steps = new ArrayList<>(); // Create a list to store the merging steps for the json
 
@@ -294,7 +297,7 @@ public class NetworkApp {
                 for (int j = i + 1; j < cities.size(); j++) {
 
                     if (sharing.shareResources(cities.get(i).id, cities.get(j).id)) { // Check if cities share resources
-                        System.out.println("Merging clusters of City " + cities.get(i).id + " and City " + cities.get(j).id + "...");
+                        System.out.println("Merging clusters of City " + cities.get(i).name + " and City " + cities.get(j).name + "...");
                         sharing.union(cities.get(i).id, cities.get(j).id); // Merge the clusters
                         Map<String,Object> thisStep = new LinkedHashMap<>();
                         thisStep.put("Action","Merge"); // Add the action to the map for the json

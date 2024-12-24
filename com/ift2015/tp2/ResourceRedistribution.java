@@ -137,7 +137,7 @@ public class ResourceRedistribution {
          */
         @Override
         public String toString() {
-            return "Transferred " + units + " units from Warehouse " + fromWarehouse.name + " to Warehouse " + toWarehouse.name + ".";
+            return "Transferred " + units + " units from Warehouse " + fromWarehouse.id + " to Warehouse " + toWarehouse.id + ".";
         }
     }
     

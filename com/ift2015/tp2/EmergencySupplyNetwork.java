@@ -149,8 +149,10 @@ public class EmergencySupplyNetwork {
 
         while (!cityQueue.isEmpty()) {
             City city = cityQueue.poll();
-
-            System.out.println("Allocating resources for City " + city.id + " (Priority: " + city.priority + ")");
+            // make priority Capital case
+            String priority_ = city.priority.toString();
+            priority_ = priority_.substring(0, 1).toUpperCase() + priority_.substring(1).toLowerCase();
+            System.out.println("Allocating resources for City " + city.name + " (Priority: " + priority_ + ")");
 
             // Sort warehouses by transportation cost for the current city
             // Create a copy of the warehouses list to avoid modifying the original list
