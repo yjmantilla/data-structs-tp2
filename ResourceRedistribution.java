@@ -1,8 +1,5 @@
-package com.ift2015.tp2;
 // ResourceRedistribution.java
 import java.util.*;
-import com.ift2015.tp2.EmergencySupplyNetwork.Warehouse;
-
 
 /**
  * The ResourceRedistribution class is responsible for managing the redistribution
@@ -27,8 +24,8 @@ import com.ift2015.tp2.EmergencySupplyNetwork.Warehouse;
  * and the number of units being transferred.
  */
 public class ResourceRedistribution {
-    private PriorityQueue<Warehouse> surplusHeap;
-    private PriorityQueue<Warehouse> needHeap;
+    private PriorityQueue<EmergencySupplyNetwork.Warehouse> surplusHeap;
+    private PriorityQueue<EmergencySupplyNetwork.Warehouse> needHeap;
 
     /**
      * Constructs a ResourceRedistribution object that categorizes warehouses into
@@ -45,7 +42,7 @@ public class ResourceRedistribution {
      * Warehouses with a remaining capacity greater than 50 are added to the surplusHeap.
      * Warehouses with a remaining capacity less than 50 are added to the needHeap.
      */
-    public ResourceRedistribution(List<Warehouse> warehouses) {
+    public ResourceRedistribution(List<EmergencySupplyNetwork.Warehouse> warehouses) {
         // Max heap for surplus warehouses (sorts by units in descending order)
         // Here we use a subtraction through a lambda expression to reverse the order of the comparison
         surplusHeap = new PriorityQueue<>((w1, w2) -> w2.remainingCapacity - w1.remainingCapacity);
@@ -54,7 +51,7 @@ public class ResourceRedistribution {
         needHeap = new PriorityQueue<>(Comparator.comparingInt(w -> w.remainingCapacity));
 
         // Categorize warehouses into surplus and need heaps
-        for (Warehouse warehouse : warehouses) {
+        for (EmergencySupplyNetwork.Warehouse warehouse : warehouses) {
             if (warehouse.remainingCapacity > 50) {
                 surplusHeap.add(warehouse);
             } else if (warehouse.remainingCapacity < 50) {
@@ -79,8 +76,8 @@ public class ResourceRedistribution {
         while (!surplusHeap.isEmpty() && !needHeap.isEmpty()) {
             // Get the warehouses with the most surplus and the most need
             // Note that poll() removes the warehouse from the heap
-            Warehouse surplusWarehouse = surplusHeap.poll();
-            Warehouse needWarehouse = needHeap.poll();
+            EmergencySupplyNetwork.Warehouse surplusWarehouse = surplusHeap.poll();
+            EmergencySupplyNetwork.Warehouse needWarehouse = needHeap.poll();
 
             // Calculate the amount of units that can be transferred
             // The amount of units that can be transferred is the minimum

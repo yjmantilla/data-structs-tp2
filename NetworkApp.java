@@ -1,10 +1,6 @@
-package com.ift2015.tp2;
 import java.io.IOException;
 // NetworkApp.java
 import java.util.*;
-
-import com.ift2015.tp2.EmergencySupplyNetwork.City;
-import com.ift2015.tp2.EmergencySupplyNetwork.ResourceAllocation;
 
 /**
  * The NetworkApp class is the main entry point for the Emergency Supply Network application.
@@ -64,7 +60,7 @@ public class NetworkApp {
 
             // Print the parsed cities and warehouses to check if the input was read correctly
             System.out.println("Parsed Cities:"+ cities.size());
-            for (City city : cities) {
+            for (EmergencySupplyNetwork.City city : cities) {
                 System.out.println("City " + city.name + " Priority: " + city.priority);
             }
             System.out.println("");
@@ -255,10 +251,10 @@ public class NetworkApp {
                 List<Integer> warehouseIds = new ArrayList<>();
                 cityToName.put(city.id, city.name);
 
-                List<ResourceAllocation> cityAllocations = allocations.get(city);
+                List<EmergencySupplyNetwork.ResourceAllocation> cityAllocations = allocations.get(city);
 
                 if (cityAllocations != null) {
-                    for (ResourceAllocation allocation : cityAllocations) {
+                    for (EmergencySupplyNetwork.ResourceAllocation allocation : cityAllocations) {
                         warehouseIds.add(allocation.warehouse.id);
                     }
                 } else {

@@ -1,4 +1,3 @@
-package com.ift2015.tp2;
 // DynamicResourceSharing.java
 import java.util.*;
 
