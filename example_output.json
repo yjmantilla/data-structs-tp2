@@ -3,19 +3,19 @@
         "Graph Representation": {
             "Cost Matrix": [
                 {
-                    "City": "City 1",
+                    "City": "A",
                     "Warehouse 101": 37.58,
                     "Warehouse 102": 76.66,
                     "Warehouse 103": 110.15
                 },
                 {
-                    "City": "City 2",
+                    "City": "B",
                     "Warehouse 101": 27.86,
                     "Warehouse 102": 61.77,
                     "Warehouse 103": 95.29
                 },
                 {
-                    "City": "City 3",
+                    "City": "C",
                     "Warehouse 101": 36.22,
                     "Warehouse 102": 72.12,
                     "Warehouse 103": 105.34
@@ -24,19 +24,19 @@
         },
         "Resource Allocation": [
             {
-                "City": "City 1",
+                "City": "A",
                 "Priority": "High",
                 "Allocated": 50,
                 "Warehouse": "Warehouse 101"
             },
             {
-                "City": "City 2",
+                "City": "B",
                 "Priority": "Medium",
                 "Allocated": 30,
                 "Warehouse": "Warehouse 101"
             },
             {
-                "City": "City 3",
+                "City": "C",
                 "Priority": "Low",
                 "Allocated": [
                     {
